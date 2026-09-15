@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ActivityDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/activity.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fish"
+display_name = "Рыбалка на костях дракона"
+flavor_text = "Драконьи кости давно окаменели, но рыба почему-то клюёт именно там."
+resource_id = "fish"
+base_rate = 0.9
+xp_rate = 1.1
+required_level = 1

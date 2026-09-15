@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1"]
+
+[node name="HUD" type="VBoxContainer"]
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1")
+
+[node name="ResourceRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GoldLabel" type="Label" parent="ResourceRow"]
+layout_mode = 2
+text = "Золото: 0"
+
+[node name="WoodLabel" type="Label" parent="ResourceRow"]
+layout_mode = 2
+text = "Дерево: 0"
+
+[node name="OreLabel" type="Label" parent="ResourceRow"]
+layout_mode = 2
+text = "Руда: 0"
+
+[node name="FishLabel" type="Label" parent="ResourceRow"]
+layout_mode = 2
+text = "Рыба: 0"
+
+[node name="LazyLabel" type="Label" parent="ResourceRow"]
+layout_mode = 2
+text = "Опыт лени: 0"
+
+[node name="ToastLabel" type="Label" parent="."]
+layout_mode = 2
+modulate = Color(0.8, 0.8, 0.8, 1)
+autowrap_mode = 2
+
+[node name="ToastTimer" type="Timer" parent="."]
+wait_time = 18.0

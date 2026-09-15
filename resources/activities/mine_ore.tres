@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ActivityDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/activity.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "mine_ore"
+display_name = "Добыча руды"
+flavor_text = "Шахта уходит вглубь горы и, по слухам, в чью-то ипотеку."
+resource_id = "ore"
+base_rate = 0.8
+xp_rate = 1.2
+required_level = 1

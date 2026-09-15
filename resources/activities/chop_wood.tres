@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ActivityDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/activity.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "chop_wood"
+display_name = "Рубка дров"
+flavor_text = "Деревья гильдии не выбирают, кому расти, а кому — стать растопкой."
+resource_id = "wood"
+base_rate = 1.0
+xp_rate = 1.0
+required_level = 1

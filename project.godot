@@ -1,0 +1,21 @@
+config_version=5
+
+[application]
+
+config/name="Гильдия Лентяев"
+run/main_scene="res://scenes/main/Main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://autoload/event_bus.gd"
+Balance="*res://autoload/balance.gd"
+Jokes="*res://autoload/jokes.gd"
+SaveManager="*res://autoload/save_manager.gd"
+GameState="*res://autoload/game_state.gd"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

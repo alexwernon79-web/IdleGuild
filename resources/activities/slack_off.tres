@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ActivityDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/activity.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "slack_off"
+display_name = "Ничегонеделание"
+flavor_text = "Официально признанный гильдией скилл. Первый в истории, не требующий инструментов."
+resource_id = "laziness_xp"
+base_rate = 1.5
+xp_rate = 0.5
+required_level = 1

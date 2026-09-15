@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/upgrade.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "comfy_hammock"
+display_name = "Удобный гамак"
+flavor_text = "Прогресс в искусстве ничегонеделания, наконец, официально измерим."
+base_cost = 15.0
+cost_currency = "gold"
+cost_growth = 1.12
+effect_target = "slack_off"
+effect_type = "multiplier"
+effect_value = 0.2
+max_level = 999

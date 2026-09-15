@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/upgrade.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "guild_pep_talk"
+display_name = "Мотивационная речь гильдмастера"
+flavor_text = "Слова красивые, эффект скромный, но хоть что-то."
+base_cost = 100.0
+cost_currency = "gold"
+cost_growth = 1.25
+effect_target = "all"
+effect_type = "multiplier"
+effect_value = 0.05
+max_level = 999

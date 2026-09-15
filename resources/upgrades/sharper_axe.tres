@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/upgrade.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sharper_axe"
+display_name = "Наточенный топор"
+flavor_text = "Теперь дерево боится не только огня."
+base_cost = 20.0
+cost_currency = "gold"
+cost_growth = 1.15
+effect_target = "chop_wood"
+effect_type = "multiplier"
+effect_value = 0.15
+max_level = 999
