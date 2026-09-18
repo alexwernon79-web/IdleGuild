@@ -22,7 +22,7 @@ func show_summary(gains: Dictionary, elapsed_seconds: float) -> void:
 	var parts: Array[String] = []
 	for resource_id in gains.keys():
 		var currency_name: String = CURRENCY_NAMES.get(resource_id, resource_id)
-		parts.append("%d %s" % [int(gains[resource_id]), currency_name])
+		parts.append("%s %s" % [NumberFormat.format(gains[resource_id]), currency_name])
 	var hours := int(elapsed_seconds / 3600.0)
 	var minutes := int(fmod(elapsed_seconds, 3600.0) / 60.0)
 	summary_label.text = "Вы отсутствовали %d ч %d мин. Гильдия заработала: %s." % [hours, minutes, ", ".join(parts)]

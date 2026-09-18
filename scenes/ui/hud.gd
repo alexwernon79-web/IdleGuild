@@ -25,7 +25,7 @@ func _refresh_all() -> void:
 
 
 func _on_resource_changed(resource_id: String, new_amount: float) -> void:
-	var text := "%d" % int(new_amount)
+	var text := NumberFormat.format(new_amount)
 	match resource_id:
 		"gold":
 			gold_label.text = "Золото: %s" % text

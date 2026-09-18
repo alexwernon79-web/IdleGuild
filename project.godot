@@ -1,10 +1,22 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
 config/name="Гильдия Лентяев"
 run/main_scene="res://scenes/main/Main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -12,6 +24,7 @@ config/icon="res://icon.svg"
 EventBus="*res://autoload/event_bus.gd"
 Balance="*res://autoload/balance.gd"
 Jokes="*res://autoload/jokes.gd"
+NumberFormat="*res://autoload/number_format.gd"
 SaveManager="*res://autoload/save_manager.gd"
 GameState="*res://autoload/game_state.gd"
 

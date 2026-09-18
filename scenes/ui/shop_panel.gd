@@ -69,5 +69,5 @@ func _refresh_all() -> void:
 		var level: int = GameState.upgrades_owned.get(upgrade_id, 0)
 		var cost := Balance.upgrade_cost(def.base_cost, def.cost_growth, level)
 		var currency_name: String = CURRENCY_NAMES.get(def.cost_currency, def.cost_currency)
-		_rows[upgrade_id]["title"].text = "%s — %d %s" % [def.display_name, int(cost), currency_name]
+		_rows[upgrade_id]["title"].text = "%s — %s %s" % [def.display_name, NumberFormat.format(cost), currency_name]
 		_rows[upgrade_id]["button"].disabled = not GameState.can_afford_upgrade(upgrade_id)
