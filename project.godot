@@ -30,6 +30,7 @@ Settings="*res://autoload/settings.gd"
 Icons="*res://autoload/icons.gd"
 SaveManager="*res://autoload/save_manager.gd"
 GameState="*res://autoload/game_state.gd"
+Sfx="*res://autoload/sfx.gd"
 
 [rendering]
 
