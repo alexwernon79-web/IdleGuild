@@ -155,6 +155,19 @@ func buy_upgrade(upgrade_id: String) -> bool:
 	return true
 
 
+func sell_resource(resource_id: String) -> float:
+	var price: float = Balance.SELL_PRICES.get(resource_id, 0.0)
+	var units := floorf(resources.get(resource_id, 0.0))
+	if price <= 0.0 or units < 1.0:
+		return 0.0
+	var earned := units * price
+	resources[resource_id] -= units
+	EventBus.resource_changed.emit(resource_id, resources[resource_id])
+	add_resource("gold", earned)
+	EventBus.resources_sold.emit(resource_id, units, earned)
+	return earned
+
+
 func apply_offline_progress(elapsed_seconds: float) -> Dictionary:
 	var capped: float = min(elapsed_seconds, Balance.OFFLINE_CAP_SECONDS)
 	if capped <= 0.0:

@@ -3,6 +3,7 @@ extends ScrollContainer
 @onready var upgrade_list: VBoxContainer = $UpgradeList
 
 var _rows: Dictionary = {}
+var _sell_rows: Dictionary = {}
 var _merchant_quip: Label
 
 const CURRENCY_NAMES := {
@@ -12,13 +13,74 @@ const CURRENCY_NAMES := {
 	"fish": "рыбы",
 }
 
+const RESOURCE_NAMES := {
+	"wood": "Дерево",
+	"ore": "Руда",
+	"fish": "Рыба",
+}
+
 
 func _ready() -> void:
 	_build_merchant_quip()
+	_build_sell_section()
 	_build_rows()
 	EventBus.resource_changed.connect(_on_resource_changed)
 	EventBus.purchase_made.connect(_on_purchase_made)
+	EventBus.resources_sold.connect(_on_resources_sold)
 	visibility_changed.connect(_on_visibility_changed)
+
+
+func _build_sell_section() -> void:
+	upgrade_list.add_child(_make_header("Продажа ресурсов"))
+	for resource_id in Balance.SELL_PRICES.keys():
+		var row := PanelContainer.new()
+		var hbox := HBoxContainer.new()
+		row.add_child(hbox)
+
+		var icon := TextureRect.new()
+		icon.texture = Icons.get_icon("resources", resource_id)
+		icon.custom_minimum_size = Vector2(32, 32)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		hbox.add_child(icon)
+
+		var label := Label.new()
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		hbox.add_child(label)
+
+		var button := Button.new()
+		button.pressed.connect(_on_sell_pressed.bind(resource_id))
+		hbox.add_child(button)
+
+		upgrade_list.add_child(row)
+		_sell_rows[resource_id] = {"label": label, "button": button}
+	upgrade_list.add_child(_make_header("Улучшения"))
+
+
+func _make_header(text: String) -> Label:
+	var header := Label.new()
+	header.text = text
+	header.add_theme_font_size_override("font_size", 20)
+	return header
+
+
+func _on_sell_pressed(resource_id: String) -> void:
+	GameState.sell_resource(resource_id)
+
+
+func _on_resources_sold(_resource_id: String, _units: float, _earned: float) -> void:
+	_merchant_quip.text = Jokes.get_random("sell")
+
+
+func _refresh_sell_rows() -> void:
+	for resource_id in _sell_rows.keys():
+		var price: float = Balance.SELL_PRICES[resource_id]
+		var units := floorf(GameState.resources.get(resource_id, 0.0))
+		var res_name: String = RESOURCE_NAMES.get(resource_id, resource_id)
+		_sell_rows[resource_id]["label"].text = "%s: %s (цена за шт.: %s)" % [res_name, NumberFormat.format(units), NumberFormat.format(price)]
+		_sell_rows[resource_id]["button"].text = "Продать всё (+%s)" % NumberFormat.format(units * price)
+		_sell_rows[resource_id]["button"].disabled = units < 1.0
 
 
 func _build_merchant_quip() -> void:
@@ -94,6 +156,7 @@ func _on_purchase_made(upgrade_id: String, new_level: int) -> void:
 
 
 func _refresh_all() -> void:
+	_refresh_sell_rows()
 	for upgrade_id in _rows.keys():
 		var def: UpgradeDef = GameState.upgrade_defs[upgrade_id]
 		var level: int = GameState.upgrades_owned.get(upgrade_id, 0)
