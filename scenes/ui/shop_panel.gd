@@ -3,6 +3,7 @@ extends ScrollContainer
 @onready var upgrade_list: VBoxContainer = $UpgradeList
 
 var _rows: Dictionary = {}
+var _merchant_quip: Label
 
 const CURRENCY_NAMES := {
 	"gold": "золота",
@@ -13,9 +14,29 @@ const CURRENCY_NAMES := {
 
 
 func _ready() -> void:
+	_build_merchant_quip()
 	_build_rows()
 	EventBus.resource_changed.connect(_on_resource_changed)
 	EventBus.purchase_made.connect(_on_purchase_made)
+	visibility_changed.connect(_on_visibility_changed)
+
+
+func _build_merchant_quip() -> void:
+	_merchant_quip = Label.new()
+	_merchant_quip.autowrap_mode = TextServer.AUTOWRAP_WORD
+	_merchant_quip.custom_minimum_size = Vector2(320, 0)
+	_merchant_quip.modulate = Color(0.8, 0.8, 0.8, 1)
+	upgrade_list.add_child(_merchant_quip)
+	_refresh_merchant_quip()
+
+
+func _refresh_merchant_quip() -> void:
+	_merchant_quip.text = Jokes.get_random("item_flavor")
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		_refresh_merchant_quip()
 
 
 func _build_rows() -> void:
@@ -61,6 +82,7 @@ func _on_resource_changed(_resource_id: String, _new_amount: float) -> void:
 func _on_purchase_made(upgrade_id: String, new_level: int) -> void:
 	if _rows.has(upgrade_id):
 		_rows[upgrade_id]["level_label"].text = "Уровень: %d" % new_level
+	_refresh_merchant_quip()
 
 
 func _refresh_all() -> void:
