@@ -38,7 +38,11 @@ func _apply_save(data: Dictionary) -> void:
 	var saved_time: float = data.get("timestamp", Time.get_unix_time_from_system())
 	var elapsed: float = Time.get_unix_time_from_system() - saved_time
 	var gains := GameState.apply_offline_progress(elapsed)
-	EventBus.offline_progress_ready.emit(gains, min(elapsed, Balance.OFFLINE_CAP_SECONDS))
+	if not gains.is_empty():
+		GameState.offline_report = {
+			"gains": gains,
+			"elapsed_seconds": min(elapsed, Balance.OFFLINE_CAP_SECONDS),
+		}
 
 
 func save_game() -> void:

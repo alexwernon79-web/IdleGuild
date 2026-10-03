@@ -16,6 +16,8 @@ var upgrade_defs: Dictionary = {}   # id -> UpgradeDef
 var heroes: Array = []              # [{id, class_id, level, xp, activity_id}, ...]
 var upgrades_owned: Dictionary = {} # upgrade_id -> level (int)
 
+var offline_report: Dictionary = {} # {gains, elapsed_seconds}; Main показывает его при старте
+
 var _autosave_timer: Timer
 
 

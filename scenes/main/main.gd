@@ -11,7 +11,7 @@ func _ready() -> void:
 	tab_container.set_tab_title(0, "Герои")
 	tab_container.set_tab_title(1, "Магазин")
 	_populate_heroes()
-	EventBus.offline_progress_ready.connect(_on_offline_progress_ready)
+	_show_offline_report()
 
 
 func _populate_heroes() -> void:
@@ -21,10 +21,11 @@ func _populate_heroes() -> void:
 		card.setup(hero)
 
 
-func _on_offline_progress_ready(gains: Dictionary, elapsed_seconds: float) -> void:
-	if gains.is_empty():
+func _show_offline_report() -> void:
+	if GameState.offline_report.is_empty():
 		return
-	offline_popup.show_summary(gains, elapsed_seconds)
+	offline_popup.show_summary(GameState.offline_report["gains"], GameState.offline_report["elapsed_seconds"])
+	GameState.offline_report = {}
 
 
 func _notification(what: int) -> void:
