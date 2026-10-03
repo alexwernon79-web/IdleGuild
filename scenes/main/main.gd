@@ -10,6 +10,7 @@ const HeroCardScene := preload("res://scenes/hero/HeroCard.tscn")
 func _ready() -> void:
 	tab_container.set_tab_title(0, "Герои")
 	tab_container.set_tab_title(1, "Магазин")
+	tab_container.set_tab_title(2, "Настройки")
 	_populate_heroes()
 	_show_offline_report()
 
