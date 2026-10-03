@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="24" fill="#6680e6"/>
+  <path d="M18 128Q18 100 64 100Q110 100 110 128Z" fill="#2f3a8f" stroke="#2b2140" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="64" cy="80" r="24" fill="#f1c27d" stroke="#2b2140" stroke-width="4"/>
+  <path d="M41 86Q64 128 87 86Q64 98 41 86Z" fill="#f2f2f2" stroke="#2b2140" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="53" cy="82" r="8" fill="#cfe8ff" fill-opacity="0.7" stroke="#2b2140" stroke-width="3"/>
+  <circle cx="75" cy="82" r="8" fill="#cfe8ff" fill-opacity="0.7" stroke="#2b2140" stroke-width="3"/>
+  <path d="M61 82h6" stroke="#2b2140" stroke-width="3"/>
+  <circle cx="54" cy="83" r="2.5" fill="#2b2140"/>
+  <circle cx="74" cy="83" r="2.5" fill="#2b2140"/>
+  <path d="M34 62L66 12L94 62Z" fill="#3b4cc0" stroke="#2b2140" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="64" cy="62" rx="40" ry="10" fill="#2f3a8f" stroke="#2b2140" stroke-width="4"/>
+  <path d="M64 30L67 38L75 40L67 43L64 51L61 43L53 40L61 38Z" fill="#f4c66b" stroke="#2b2140" stroke-width="2" stroke-linejoin="round"/>
+</svg>

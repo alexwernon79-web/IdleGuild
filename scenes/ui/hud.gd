@@ -10,6 +10,11 @@ extends VBoxContainer
 
 
 func _ready() -> void:
+	$ResourceRow/GoldIcon.texture = Icons.get_icon("resources", "gold")
+	$ResourceRow/WoodIcon.texture = Icons.get_icon("resources", "wood")
+	$ResourceRow/OreIcon.texture = Icons.get_icon("resources", "ore")
+	$ResourceRow/FishIcon.texture = Icons.get_icon("resources", "fish")
+	$ResourceRow/LazyIcon.texture = Icons.get_icon("resources", "laziness_xp")
 	_refresh_all()
 	EventBus.resource_changed.connect(_on_resource_changed)
 	EventBus.hero_leveled.connect(_on_hero_leveled)

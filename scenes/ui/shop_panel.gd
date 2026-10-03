@@ -47,6 +47,14 @@ func _build_rows() -> void:
 		var hbox := HBoxContainer.new()
 		row.add_child(hbox)
 
+		var icon := TextureRect.new()
+		icon.texture = Icons.get_icon("upgrades", upgrade_id)
+		icon.custom_minimum_size = Vector2(48, 48)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		hbox.add_child(icon)
+
 		var info := VBoxContainer.new()
 		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var title := Label.new()

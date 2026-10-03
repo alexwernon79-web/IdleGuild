@@ -27,6 +27,7 @@ Balance="*res://autoload/balance.gd"
 Jokes="*res://autoload/jokes.gd"
 NumberFormat="*res://autoload/number_format.gd"
 Settings="*res://autoload/settings.gd"
+Icons="*res://autoload/icons.gd"
 SaveManager="*res://autoload/save_manager.gd"
 GameState="*res://autoload/game_state.gd"
 

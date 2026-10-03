@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var avatar: ColorRect = $HBoxContainer/Avatar
+@onready var avatar: TextureRect = $HBoxContainer/Avatar
 @onready var name_label: Label = $HBoxContainer/Info/NameLabel
 @onready var desc_label: Label = $HBoxContainer/Info/DescLabel
 @onready var xp_bar: ProgressBar = $HBoxContainer/Info/XpBar
@@ -14,19 +14,21 @@ func setup(hero: Dictionary) -> void:
 	_hero_id = hero["id"]
 	var hero_class: HeroClassDef = GameState.get_hero_class(hero)
 	if hero_class:
-		avatar.color = hero_class.color
+		avatar.texture = Icons.get_icon("heroes", hero_class.id)
 		desc_label.text = hero_class.description
 	_populate_activities(hero["activity_id"])
 	_refresh_flavor(hero["activity_id"])
 
 
 func _populate_activities(current_activity_id: String) -> void:
+	activity_select.add_theme_constant_override("icon_max_width", 24)
+	activity_select.get_popup().add_theme_constant_override("icon_max_width", 24)
 	activity_select.clear()
 	var idx := 0
 	var selected_idx := 0
 	for activity_id in GameState.activities.keys():
 		var activity: ActivityDef = GameState.activities[activity_id]
-		activity_select.add_item(activity.display_name, idx)
+		activity_select.add_icon_item(Icons.get_icon("activities", activity_id), activity.display_name, idx)
 		activity_select.set_item_metadata(idx, activity_id)
 		if activity_id == current_activity_id:
 			selected_idx = idx
